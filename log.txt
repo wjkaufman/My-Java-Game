@@ -1,0 +1,6 @@
+2014-11-23
+
+I’m currently following a tutorial on Youtube to create a Java game.  Not 100% sure what’s going on right now, but I think it’ll be good practice.
+
+I’m a little confused about when to use the “this” keyword when in classes.  The guy in the tutorial never uses them, but it may just be because there will only be one instance of the class, such as one GamePanel or one GameStateManager.
+
