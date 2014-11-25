@@ -8,10 +8,13 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import GameState.GameStateManager;
+
 public class GamePanel extends JPanel implements Runnable, KeyListener
 {
 	// dimensions
-	public static final int WIDTH = 320, HEIGHT = 240, SCALE = 2;
+	public static final int xRatio = 320, yRatio = 240, SCALE = 2;
+	public static final int WIDTH = xRatio * SCALE, HEIGHT = yRatio * SCALE;
 	
 	// game thread
 	private Thread thread; // what does this mean?
@@ -23,10 +26,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener
 	private BufferedImage image;
 	private Graphics2D g;
 	
+	// game state manager
+	private GameStateManager gsm;
+	
+	
 	// constructors
 	public GamePanel()
 	{
-		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		// setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		this.setSize(new Dimension(WIDTH, HEIGHT));
 		setFocusable(true);
 		requestFocus();
 		
@@ -47,9 +55,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener
 	private void init()
 	{
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-		g = (Graphics2D) g;
+		g = (Graphics2D) image.getGraphics();
 		
 		running = true;
+		
+		gsm = new GameStateManager();
 		
 	}
 	
@@ -69,6 +79,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener
 			
 			elapsed = System.nanoTime() - start;
 			wait = targetTime - elapsed / 1000000;
+			if (wait < 0) wait = 5;
 			
 			try
 			{
@@ -84,12 +95,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener
 	
 	private void update()
 	{
-		
+		gsm.update();
 	}
 	
 	private void draw()
 	{
-		
+		gsm.draw(g);
 	}
 	
 	private void drawToScreen()
@@ -109,12 +120,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener
 	
 	public void keyPressed(KeyEvent e)
 	{
-		
+		gsm.keyPressed(e.getKeyCode());
 	}
 	
 	public void keyReleased(KeyEvent e)
 	{
-		
+		gsm.keyReleased(e.getKeyCode());
 	}
 	
 	
