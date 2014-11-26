@@ -49,6 +49,9 @@ public class Background
 	{
 		this.x += this.dx;
 		this.y += this.dy;
+		this.x = this.x % GamePanel.WIDTH;
+		this.y = this.y % GamePanel.WIDTH;
+		
 		
 	}
 	
