@@ -1,6 +1,10 @@
 package GameState;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+
+import Main.GamePanel;
+import TileMap.TileMap;
 
 public class Level1State extends GameState
 {
@@ -16,7 +20,11 @@ public class Level1State extends GameState
 	@Override
 	public void init()
 	{
-		// tileMap = new TileMap(30);
+		tileMap = new TileMap(30);
+		tileMap.loadTiles("Resources/tileset.png");
+		tileMap.loadMap("Resources/Maps/lvl1_map.txt");
+		tileMap.setPosition(0, 0);
+		
 
 	}
 
@@ -30,7 +38,12 @@ public class Level1State extends GameState
 	@Override
 	public void draw(Graphics2D g)
 	{
-		// TODO Auto-generated method stub
+		// clear screen
+		g.setColor(Color.gray);
+		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
+		
+		// draw tilemap
+		tileMap.draw(g);
 
 	}
 
