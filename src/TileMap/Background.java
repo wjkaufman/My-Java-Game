@@ -20,9 +20,8 @@ public class Background
 		try
 		{
 			File myFile = new File(s); // something is going wrong here
-				System.out.println("File \"" + s + "\" exists: " + myFile.exists());
-				System.out.println("File \"" + s + "\" is readable: " + myFile.canRead());
-			FileInputStream fis = new FileInputStream(myFile);
+				// System.out.println("File \"" + s + "\" exists: " + myFile.exists());
+				// System.out.println("File \"" + s + "\" is readable: " + myFile.canRead());
 			image = ImageIO.read(myFile);  // image = ImageIO.read(getClass().getResourceAsStream(s));
 			moveScale = ms;
 		}

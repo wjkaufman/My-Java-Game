@@ -4,3 +4,9 @@ I’m currently following a tutorial on Youtube to create a Java game.  Not 100%
 
 I’m a little confused about when to use the “this” keyword when in classes.  The guy in the tutorial never uses them, but it may just be because there will only be one instance of the class, such as one GamePanel or one GameStateManager.
 
+2014-11-27
+
+Working currently on the second tutorial, link here:
+http://www.youtube.com/watch?v=qJpdRFvSj1A
+
+Currently at 15:27 in the second tutorial.
